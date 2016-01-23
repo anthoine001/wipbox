@@ -7,10 +7,10 @@ except:
      from Tkinter import  *
 
 fenetre = Tk()
-#fenetre.attributes('-fullscreen', 1)
+fenetre.attributes('-fullscreen', 1)
 fenetre.attributes('-topmost', 1)
 
-label = Label(fenetre, text="Hello World")
+label = Label(fenetre, text="Hell2o World")
 label.pack()
 
 bouton=Button(fenetre, text="Fermer", command=fenetre.quit)
