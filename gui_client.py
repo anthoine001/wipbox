@@ -23,9 +23,12 @@ serveur_port = 1111
 fenetre = Tk()
 fenetre.title('K3X8')
 fenetre.resizable(0,0)
-canvas = Canvas(fenetre, width=largeur, height=hauteur, background='black')
-photo = PhotoImage(file="ntn.jpeg")
-canvas.create_image(0, 0, anchor=NW, image=photo)
+try:
+    canvas = Canvas(fenetre, width=largeur, height=hauteur, background='black')
+    photo = PhotoImage(file="/Users/lemairec/wipbox/ntn.png")
+    canvas.create_image(0, 0, anchor=NW, image=photo)
+except:
+    print "load img fail"
 k=niveau
 marqueur=canvas.create_oval(taille*k,hauteur/2+taille*0.5,taille*(k+1),hauteur/2+taille*1.5,fill='yellow')
 
