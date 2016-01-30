@@ -41,7 +41,7 @@ fenetre.title('K3X8')
 fenetre.resizable(0,0)
 canvas = Canvas(fenetre, width=largeur, height=hauteur, background='black')
 try:
-    photo = PhotoImage(file="ntn.png")
+    photo = PhotoImage(file="ntn.jpeg")
     canvas.create_image(0, 0, anchor=NW, image=photo)
 except:
     print "load img fail"
