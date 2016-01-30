@@ -31,7 +31,7 @@ print "adress " + serveur_ip + "[" + str(serveur_port) + "]"
 #Définition de la taille de l ecran et du stock
 limite=4
 largeur =800
-hauteur=600
+hauteur=480
 taille=largeur/(stock+1)
 niveau =0
 
