@@ -39,9 +39,9 @@ niveau =0
 fenetre = Tk()
 fenetre.title('K3X8')
 fenetre.resizable(0,0)
+canvas = Canvas(fenetre, width=largeur, height=hauteur, background='black')
 try:
-    canvas = Canvas(fenetre, width=largeur, height=hauteur, background='black')
-    photo = PhotoImage(file="/Users/lemairec/wipbox/ntn.png")
+    photo = PhotoImage(file="ntn.png")
     canvas.create_image(0, 0, anchor=NW, image=photo)
 except:
     print "load img fail"
