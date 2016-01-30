@@ -12,20 +12,23 @@ import argparse
 parser = argparse.ArgumentParser(description='wipbox client')
 parser.add_argument('--ip', nargs=1, help='adresse ip')
 parser.add_argument('--port', type=int, help='numero de port')
+parser.add_argument('--stock', type=int, help='stock')
 args = parser.parse_args()
 
 serveur_ip = ""
 if(args.ip is not None):
-    serveur_ip = args.ip
+    serveur_ip = args.ip[0]
 serveur_port = 1111
 if(args.port is not None):
     serveur_port = args.port
+stock=10
+if(args.stock is not None):
+    stock = args.stock
 
 print "adress " + serveur_ip + "[" + str(serveur_port) + "]" 
 
 
 #Définition de la taille de l ecran et du stock
-stock=10
 limite=4
 largeur =800
 hauteur=600
