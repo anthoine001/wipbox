@@ -6,7 +6,22 @@ try:
 except:
     from Tkinter import  *
 import socket
+import argparse
 
+
+parser = argparse.ArgumentParser(description='wipbox client')
+parser.add_argument('--ip', nargs=1, help='adresse ip')
+parser.add_argument('--port', type=int, help='numero de port')
+args = parser.parse_args()
+
+serveur_ip = ""
+if(args.ip is not None):
+    serveur_ip = args.ip
+serveur_port = 1111
+if(args.port is not None):
+    serveur_port = args.port
+
+print "adress " + serveur_ip + "[" + str(serveur_port) + "]" 
 
 
 #Définition de la taille de l ecran et du stock
@@ -16,8 +31,6 @@ largeur =800
 hauteur=600
 taille=largeur/(stock+1)
 niveau =0
-serveur_ip = ""
-serveur_port = 1111
 
 #initialisation de la fenêtre
 fenetre = Tk()
