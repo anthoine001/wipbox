@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
  
@@ -28,14 +29,16 @@ if(args.stock is not None):
 print "adress " + serveur_ip + "[" + str(serveur_port) + "]" 
 
 
-#Définition de la taille de l ecran et du stock
+#Definition de la taille de l ecran et du stock
+root = Tk()
 limite=4
-largeur =800
-hauteur=480
+largeur =root.winfo_screenwidth()
+hauteur=root.winfo_screenheight()
 taille=largeur/(stock+1)
 niveau =0
+root.destroy()
 
-#initialisation de la fenêtre
+#initialisation de la fenetre
 fenetre = Tk()
 fenetre.title('K3X8')
 fenetre.resizable(0,0)
@@ -67,10 +70,10 @@ def send_niveau(niveau):
     s.connect((serveur_ip, serveur_port))
     s.send("niveau " + str(niveau))
 
-#Détection du clic, de la position et positionnement d'un symbole
+#Detection du clic, de la position et positionnement d'un symbole
 def touche(event):
     if hauteur/2-taille/2<event.y<hauteur/2+taille/2:
-        # Capturer la case qui a été cliquée
+        # Capturer la case qui a ete cliquee
         k=int(event.x/taille)
         print(k)
         canvas.coords(marqueur,taille*k,hauteur/2+taille*0.5,taille*(k+1),hauteur/2+taille*1.5)

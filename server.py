@@ -25,7 +25,7 @@ class ClientThread(threading.Thread):
         print("Connection de %s %s" % (self.ip, self.port, ))
 
         r = str(datetime.now()) + ";" + self.clientsocket.recv(2048)
-        print r
+        print (r)
 
         file = open(file_save, 'a')
         file.write(r + "\n")
