@@ -69,7 +69,7 @@ canvas.pack()
 def send_niveau(niveau):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect((serveur_ip, serveur_port))
-    s.send("niveau " + str(niveau))
+    s.send(args.nom + " niveau " + str(niveau))
 
 #Detection du clic, de la position et positionnement d'un symbole
 def touche(event):
