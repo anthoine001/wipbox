@@ -14,6 +14,7 @@ parser = argparse.ArgumentParser(description='wipbox client')
 parser.add_argument('--ip', nargs=1, help='adresse ip')
 parser.add_argument('--port', type=int, help='numero de port')
 parser.add_argument('--stock', type=int, help='stock')
+parser.add_argument('--nom', type=str, help='nom de la machine')
 args = parser.parse_args()
 
 serveur_ip = ""
