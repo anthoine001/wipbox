@@ -14,6 +14,7 @@ parser = argparse.ArgumentParser(description='wipbox client')
 parser.add_argument('--ip', nargs=1, help='adresse ip')
 parser.add_argument('--port', type=int, help='numero de port')
 parser.add_argument('--stock', type=int, help='stock')
+#ATTENTION : nous allons coder les noms de machine sur 6 caracteres obligatoirement
 parser.add_argument('--nom', type=str, help='nom de la machine')
 args = parser.parse_args()
 
@@ -41,7 +42,7 @@ root.destroy()
 
 #initialisation de la fenetre
 fenetre = Tk()
-fenetre.title('K3X8')
+fenetre.title(args.nom)
 fenetre.resizable(0,0)
 canvas = Canvas(fenetre, width=largeur, height=hauteur, background='black')
 try:
@@ -69,7 +70,7 @@ canvas.pack()
 def send_niveau(niveau):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect((serveur_ip, serveur_port))
-    s.send(args.nom + " niveau " + str(niveau))
+    s.send(args.nom + str(niveau))
 
 #Detection du clic, de la position et positionnement d'un symbole
 def touche(event):
