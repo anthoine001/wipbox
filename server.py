@@ -46,6 +46,7 @@ class ClientThread(threading.Thread):
         cursor = db.cursor()
         cursor.execute("""
             INSERT INTO etat(machine, niveau, moment) VALUES(?, ?, ?)""", (machine, niveau, str(datetime.now())))
+        db.commit()
         db.close()
         print("Client déconnecté...")
 
