@@ -4,8 +4,8 @@
 import socket
 import threading
 from datetime import datetime
-from Tkinter import *
-from threading import Thread
+import sqlite3
+
 
 port = 1111
 listeMachines = ['K3X8--','K2X8--','CX7---','KX10--']
@@ -41,41 +41,22 @@ class ClientThread(threading.Thread):
         machine = r[0:6]
         niveau = r[6]
         ranger(machine,niveau)
+        #rangement dans la base SQLite
+        db = sqlite3.connect('wipOutillage.db')
+        cursor = db.cursor()
+        cursor.execute("""
+            INSERT INTO etat(machine, niveau, moment) VALUES(?, ?, ?)""", (machine, niveau, str(datetime.now())))
+        db.close()
         print("Client déconnecté...")
-
-class Afficheur(Thread):
-
-    """Thread chargé simplement d'afficher un mot dans la console."""
-
-    def __init__(self,liste1,liste2):
-        Thread.__init__(self)
-        self.liste1 = liste1
-        self.liste2 = liste2
-
-    def run(self):
-        """Code à exécuter pendant l'exécution du thread."""
-        print('demarre le thread affichage')
-        fenetre = Tk()
-        #threadLock.acquire()
-        for i in range(len(self.liste1)):
-            Button(fenetre, text=self.liste1[i], borderwidth=1).grid(row=1, column=i+1)
-            Button(fenetre, text=self.liste2[i], borderwidth=1).grid(row=2, column=i+1)
-        fenetre.mainloop()
-        print('fin thread affichage')
-       # threadLock.release()
 
 tcpsock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 tcpsock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 tcpsock.bind(("",1111))
-thread_1 = Afficheur(listeMachines,listeNiveaux)
+
 while True:
     tcpsock.listen(10)
     print( "En écoute... port " + str(port))
     (clientsocket, (ip, port)) = tcpsock.accept()
     newthread = ClientThread(ip, port, clientsocket)
-    thread_1.start()
     newthread.start()
-   
-    newthread.join()
-    thread_1.join()
 
