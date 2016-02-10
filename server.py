@@ -39,14 +39,13 @@ class ClientThread(threading.Thread):
         file.write(r2 + "\n")
         file.close()
         machine = r[0:6]
-        print(machine)
         niveau = r[6]
-        print(niveau)
-        ranger(machine,niveau)
+        niveau = int(niveau)
+        
         #rangement dans la base SQLite
         db = sqlite3.connect('wipOutillage.db')
         cursor = db.cursor()
-        cursor.execute("UPDATE etat SET niveau = niveau WHERE machine = machine")
+        cursor.execute("UPDATE etat SET niveau = ? WHERE machine = ?",(niveau,machine))
         #cursor.execute("UPDATE etat SET moment = maintenant  WHERE machine = machine")
         db.commit()
         db.close()
