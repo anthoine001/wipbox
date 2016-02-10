@@ -11,8 +11,7 @@ cursor = db.cursor()
 
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS etat(
-     id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
-     machine TEXT,
+     machine TEXT PRIMARY KEY UNIQUE,
      niveau INTERGER,
      moment TEXT
 )
