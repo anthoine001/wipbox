@@ -33,8 +33,6 @@ class ClientThread(threading.Thread):
         maintenant =str(datetime.now())
         r = self.clientsocket.recv(2048)
         r2 =  maintenant + "; " + r
-        #print (r)
-
         file = open(file_save, 'a')
         file.write(r2 + "\n")
         file.close()
@@ -45,8 +43,7 @@ class ClientThread(threading.Thread):
         #rangement dans la base SQLite
         db = sqlite3.connect('wipOutillage.db')
         cursor = db.cursor()
-        cursor.execute("UPDATE etat SET niveau = ? WHERE machine = ?",(niveau,machine))
-        #cursor.execute("UPDATE etat SET moment = maintenant  WHERE machine = machine")
+        cursor.execute("UPDATE etat SET niveau = ?, moment = ? WHERE machine = ?",(niveau,maintenant,machine))
         db.commit()
         db.close()
         print("Client déconnecté...")
