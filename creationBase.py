@@ -7,7 +7,7 @@ from datetime import datetime
 db = sqlite3.connect('wipOutillage.db')
 cursor = db.cursor()
 
-maintenant = str(datetime.now()
+
 
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS etat(
@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS etat(
 
 db.commit()
 etat = []
+maintenant = str(datetime.now())
 etat.append(("K3X8--",0,maintenant))
 etat.append(("K2X8--",0,maintenant))
 etat.append(("CX7---",0,maintenant))
