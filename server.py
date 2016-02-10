@@ -33,13 +33,15 @@ class ClientThread(threading.Thread):
         maintenant =str(datetime.now())
         r = self.clientsocket.recv(2048)
         r2 =  maintenant + "; " + r
-        print (r)
+        #print (r)
 
         file = open(file_save, 'a')
         file.write(r2 + "\n")
         file.close()
         machine = r[0:6]
+        print(machine)
         niveau = r[6]
+        print(niveau)
         ranger(machine,niveau)
         #rangement dans la base SQLite
         db = sqlite3.connect('wipOutillage.db')
