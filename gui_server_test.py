@@ -17,6 +17,7 @@ hauteur=root.winfo_screenheight()
 root.title("WIPBOX by NTN CREZANCY - Instant Vizualisation Of WIP in the Tooling Workshop")
 root.resizable(0,0)
 canvas = Canvas(root, width=largeur-6, height=hauteur, background='black')
+root.mainloop()
 while True:
     db = sqlite3.connect('wipOutillage.db')
     cursor = db.cursor()
@@ -31,4 +32,3 @@ while True:
     db.close
     #canvas.delete("all")
     canvas.pack()
-root.mainloop()
