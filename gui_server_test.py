@@ -24,10 +24,10 @@ class ServerGui():
         
         print self.largeur 
         print self.hauteur
-        canvas = Canvas(self.root, width = self.largeur-6, height = self.hauteur-200, background = 'black')
-        canvas.pack()
+        self.canvas = Canvas(self.root, width = self.largeur-6, height = self.hauteur-66, background = 'black')
+        self.canvas.pack()
 
-        self.label = Label(text="")
+        self.label = Label(text="test", fg = 'yellow')
         self.label.pack()
         
         #timer
@@ -39,7 +39,7 @@ class ServerGui():
     #rafrachissement toutes les 1000 ms
     def update_timer(self):
         self.update_clock();
-        #self.update_canvas();
+        self.update_canvas();
         self.root.after(1000, self.update_timer)
 
     def update_clock(self):
@@ -48,23 +48,28 @@ class ServerGui():
         
     def update_canvas(self):
         print "anthoine il faut coder!!!"
-        #ton code ici
+        self.canvas.delete('all')
+        db = sqlite3.connect('wipOutillage.db')
+        cursor = db.cursor()
+        cursor.execute("""SELECT machine, niveau, moment, alerte FROM etat""")
+        rows = cursor.fetchall()
+        i=0
+        for row in rows:
+            print('{0} - {1} - {2} - {3}'.format(row[0], row[1], row[2], row[3]))
+            txt = self.canvas.create_text(75, 60+i*self.hauteur/10, text=row[0], font="Arial 16 italic", fill="white")
+            txt2 = self.canvas.create_text(125, 60+i*self.hauteur/10, text=row[1], font="Arial 16 italic", fill="yellow")
+            if row[3] > row[1]:
+                self.canvas.create_rectangle(175-10, 60+i*self.hauteur/10-10,175+10,60+i*self.hauteur/10+10,fill = 'green')
+            elif row[3] == row[1]:
+                self.canvas.create_rectangle(175-10, 60+i*self.hauteur/10-10,175+10,60+i*self.hauteur/10+10,fill = 'orange')
+            else:
+                self.canvas.create_rectangle(175-10, 60+i*self.hauteur/10-10,175+10,60+i*self.hauteur/10+10,fill = 'red')
+            i=i+1
+        db.close
         
 
 
 
 s = ServerGui()
 
-#db = sqlite3.connect('wipOutillage.db')
-#cursor = db.cursor()
-#cursor.execute("""SELECT machine, niveau, moment, alerte FROM etat""")
-#rows = cursor.fetchall()
-#i=0
-#for row in rows:
-#    print('{0} - {1} - {2} - {3}'.format(row[0], row[1], row[2], row[3]))
-#    txt = canvas.create_text(75, 60+i*hauteur/10, text=row[0], font="Arial 16 italic", fill="white")
-#    txt2 = canvas.create_text(125, 60+i*hauteur/10, text=row[1], font="Arial 16 italic", fill="yellow")
-#    i=i+1
-#db.close
-#canvas.delete("all")
 

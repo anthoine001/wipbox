@@ -32,16 +32,15 @@ print "adress " + serveur_ip + "[" + str(serveur_port) + "]"
 
 
 #Definition de la taille de l ecran et du stock
-root = Tk()
+fenetre = Tk()
 limite=4
-largeur =root.winfo_screenwidth()
-hauteur=root.winfo_screenheight()
+largeur =fenetre.winfo_screenwidth()
+hauteur=fenetre.winfo_screenheight()
 taille=largeur/(stock+1)
 niveau =0
-root.destroy()
+
 
 #initialisation de la fenetre
-fenetre = Tk()
 fenetre.title(args.nom)
 fenetre.resizable(0,0)
 canvas = Canvas(fenetre, width=largeur, height=hauteur, background='black')
