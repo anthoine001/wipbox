@@ -30,6 +30,7 @@ etat.append(("MAZAK2",0,maintenant,4))
 etat.append(("DANOBA",0,maintenant,4))
 etat.append(("ET2201",0,maintenant,4))
 etat.append(("ET2202",0,maintenant,4))
+etat.append(("CAZENE",0,maintenant,4))
 cursor.executemany("""
             INSERT INTO etat(machine, niveau, moment, alerte) VALUES(?, ?, ?, ?)""", etat)
 db.commit()

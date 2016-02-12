@@ -51,19 +51,23 @@ class ServerGui():
         self.canvas.delete('all')
         db = sqlite3.connect('wipOutillage.db')
         cursor = db.cursor()
+        cursor.execute("""SELECT count(machine) FROM etat""")
+        nbMachines = cursor.fetchone()
+        nb=int(nbMachines[0])
+        print(nb)
         cursor.execute("""SELECT machine, niveau, moment, alerte FROM etat""")
         rows = cursor.fetchall()
-        i=0
+        i=0.5
         for row in rows:
             print('{0} - {1} - {2} - {3}'.format(row[0], row[1], row[2], row[3]))
-            txt = self.canvas.create_text(75, 60+i*self.hauteur/10, text=row[0], font="Arial 16 italic", fill="white")
-            txt2 = self.canvas.create_text(125, 60+i*self.hauteur/10, text=row[1], font="Arial 16 italic", fill="yellow")
+            txt = self.canvas.create_text(75, i*self.hauteur/(nb+1), text=row[0], font="Arial 16 italic", fill="white")
+            txt2 = self.canvas.create_text(125, i*self.hauteur/(nb+1), text=row[1], font="Arial 16 italic", fill="yellow")
             if row[3] > row[1]:
-                self.canvas.create_rectangle(175-10, 60+i*self.hauteur/10-10,175+10,60+i*self.hauteur/10+10,fill = 'green')
+                self.canvas.create_rectangle(175-10, i*self.hauteur/(nb+1)-10,175+10, i*self.hauteur/(nb+1)+10,fill = 'green')
             elif row[3] == row[1]:
-                self.canvas.create_rectangle(175-10, 60+i*self.hauteur/10-10,175+10,60+i*self.hauteur/10+10,fill = 'orange')
+                self.canvas.create_rectangle(175-10, i*self.hauteur/(nb+1)-10,175+10, i*self.hauteur/(nb+1)+10,fill = 'orange')
             else:
-                self.canvas.create_rectangle(175-10, 60+i*self.hauteur/10-10,175+10,60+i*self.hauteur/10+10,fill = 'red')
+                self.canvas.create_rectangle(175-10, i*self.hauteur/(nb+1)-10,175+10, i*self.hauteur/(nb+1)+10,fill = 'red')
             i=i+1
         db.close
         
