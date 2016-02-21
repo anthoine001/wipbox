@@ -10,7 +10,7 @@ import sqlite3
 port = 1111
 listeMachines = ['K3X8--','K2X8--','CX7---','KX10--']
 listeNiveaux = [0,0,0,0]
-file_save = "toto.txt"
+file_save = "histo.txt"
 
 def ranger(texte,valeur):
     for i in range(len(listeMachines)):
