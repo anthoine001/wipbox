@@ -22,8 +22,8 @@ class ServerGui():
         self.root.title("WIPBOX by NTN CREZANCY - Instant Vizualisation Of WIP in the Tooling Workshop")
         self.root.resizable(0,0)
         
-        print self.largeur 
-        print self.hauteur
+        print (self.largeur) 
+        print (self.hauteur)
         self.canvas = Canvas(self.root, width = self.largeur-6, height = self.hauteur-66, background = 'black')
         self.canvas.pack()
 
@@ -47,7 +47,7 @@ class ServerGui():
         self.label.configure(text=now)
         
     def update_canvas(self):
-        print "anthoine il faut coder!!!"
+        
         self.canvas.delete('all')
         db = sqlite3.connect('wipOutillage.db')
         cursor = db.cursor()
@@ -70,7 +70,12 @@ class ServerGui():
                 self.canvas.create_rectangle(175-10, i*self.hauteur/(nb+1)-10,175+10, i*self.hauteur/(nb+1)+10,fill = 'red')
             i=i+1
         db.close
-        
+        try:
+            self.photo = PhotoImage(file="plan.gif")
+            self.canvas.create_image(220, 10, anchor=NW, image=self.photo)
+            print("load img ok")
+        except:
+            print ("load img fail")
 
 
 
