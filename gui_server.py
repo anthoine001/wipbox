@@ -5,7 +5,7 @@ try:
 except:
     from Tkinter import  *
 import sqlite3 
-
+from tkinter.messagebox import *
 
 import time
 
@@ -15,27 +15,45 @@ class ServerGui():
     def __init__(self):
         #Definition de la taille de l ecran
         self.root = Tk()
-        self.largeur = self.root.winfo_screenwidth()
-        self.hauteur = self.root.winfo_screenheight()
+        self.largeur = self.root.winfo_screenwidth()-10
+        self.hauteur = self.root.winfo_screenheight()-10
 
         #initialisation de la fenetre
         self.root.title("WIPBOX by NTN CREZANCY - Instant Vizualisation Of WIP in the Tooling Workshop")
         self.root.resizable(0,0)
-        
+        #initialisation du menu
+        menubar = Menu(self.root)
+        menu1 = Menu(menubar, tearoff=0)
+        menu1.add_command(label="Créer", command=self.alert)
+        menu1.add_command(label="Editer", command=self.alert)
+        menu1.add_separator()
+        menu1.add_command(label="Quitter", command=self.root.quit)
+        menubar.add_cascade(label="Configuration", menu=menu1)
+
+        menu2 = Menu(menubar, tearoff=0)
+        menu2.add_command(label="Couper", command=self.alert)
+        menu2.add_command(label="Copier", command=self.alert)
+        menu2.add_command(label="Coller", command=self.alert)
+        menubar.add_cascade(label="Aide", menu=menu2)
+        self.root.config(menu=menubar)
+
         print (self.largeur) 
         print (self.hauteur)
-        self.canvas = Canvas(self.root, width = self.largeur-6, height = self.hauteur-66, background = 'black')
+        self.canvas = Canvas(self.root, width = self.largeur-6, height = self.hauteur-46, background = 'black')
         self.canvas.pack()
 
         self.label = Label(text="test", fg = 'yellow')
-        self.label.pack()
+        self.label.pack(side="bottom")
         
         #timer
         self.update_timer()
 
         #loop principale
         self.root.mainloop()
-
+        
+    def alert(self):
+        showinfo("alerte", "Bravo!")
+    
     #rafrachissement toutes les 1000 ms
     def update_timer(self):
         self.update_clock();
@@ -72,7 +90,7 @@ class ServerGui():
         db.close
         try:
             self.photo = PhotoImage(file="plan.gif")
-            self.canvas.create_image(220, 10, anchor=NW, image=self.photo)
+            self.canvas.create_image(260, 80, anchor=NW, image=self.photo)
             print("load img ok")
         except:
             print ("load img fail")
