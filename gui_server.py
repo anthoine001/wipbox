@@ -59,11 +59,14 @@ class ServerGui():
             print("saveConfigMachine")
             db = sqlite3.connect('wipOutillage.db')
             cursor = db.cursor()
+            #cursor.execute("""SELECT machine FROM etat""")
+            #rows = cursor.fetchall()
             maintenant =str(datetime.now())
-            #for e in entries:
-            #    i=0
-            #    print(e.get())
-            cursor.execute("UPDATE etat SET niveau = ?, moment = ? WHERE machine = ?",(entries[0].get(),maintenant,"K3X8--"))
+            i=0
+            for e in entries:
+                print (e.get(), str(donnees[i]))
+                #cursor.execute("UPDATE etat SET niveau = ?, moment = ? WHERE machine = ?",(e.get(),maintenant,donnees[i]))
+                i=i+1
             db.commit()
             db.close()
             
@@ -74,16 +77,18 @@ class ServerGui():
         cursor.execute("""SELECT count(machine) FROM etat""")
         nbMachines = cursor.fetchone()
         nb=int(nbMachines[0])
-        cursor.execute("""SELECT machine, niveau, moment, alerte FROM etat""")
+        cursor.execute("""SELECT machine FROM etat""")
         donnees = cursor.fetchall()
         i=0
         entries =[]
+        machines = []
         for line in donnees:
             l = Label(dialogueConfigMachine, text=line[0], width=10)
             e = Entry(dialogueConfigMachine, width=10)
             l.grid(row=i, column=0)
             e.grid(row=i, column=1)
             entries.append(e)
+            machines.append(donnees[i])
             i=i+1
         db.close
         b1 = Button(dialogueConfigMachine, text='Valider', command=saveConfigMachine)
