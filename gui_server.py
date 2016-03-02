@@ -6,7 +6,7 @@ except:
     from Tkinter import  *
 import sqlite3 
 from tkinter.messagebox import *
-
+from datetime import datetime
 import time
 
 
@@ -24,7 +24,7 @@ class ServerGui():
         #initialisation du menu
         menubar = Menu(self.root)
         menu1 = Menu(menubar, tearoff=0)
-        menu1.add_command(label="Créer", command=self.alert)
+        menu1.add_command(label="Inialiser une machine", command=self.initMachine)
         menu1.add_command(label="Editer", command=self.alert)
         menu1.add_separator()
         menu1.add_command(label="Quitter", command=self.root.quit)
@@ -53,7 +53,48 @@ class ServerGui():
         
     def alert(self):
         showinfo("alerte", "Bravo!")
-    
+
+    def initMachine(self) :
+        def saveConfigMachine() :
+            print("saveConfigMachine")
+            db = sqlite3.connect('wipOutillage.db')
+            cursor = db.cursor()
+            maintenant =str(datetime.now())
+            #for e in entries:
+            #    i=0
+            #    print(e.get())
+            cursor.execute("UPDATE etat SET niveau = ?, moment = ? WHERE machine = ?",(entries[0].get(),maintenant,"K3X8--"))
+            db.commit()
+            db.close()
+            
+        dialogueConfigMachine = Tk()
+        dialogueConfigMachine.title("Entrez la valeur des wip")
+        db = sqlite3.connect('wipOutillage.db')
+        cursor = db.cursor()
+        cursor.execute("""SELECT count(machine) FROM etat""")
+        nbMachines = cursor.fetchone()
+        nb=int(nbMachines[0])
+        cursor.execute("""SELECT machine, niveau, moment, alerte FROM etat""")
+        donnees = cursor.fetchall()
+        i=0
+        entries =[]
+        for line in donnees:
+            l = Label(dialogueConfigMachine, text=line[0], width=10)
+            e = Entry(dialogueConfigMachine, width=10)
+            l.grid(row=i, column=0)
+            e.grid(row=i, column=1)
+            entries.append(e)
+            i=i+1
+        db.close
+        b1 = Button(dialogueConfigMachine, text='Valider', command=saveConfigMachine)
+        b1.grid(row=i, column=0)
+        b2 = Button(dialogueConfigMachine, text='Annuler', command=dialogueConfigMachine.destroy)
+        b2.grid(row=i, column=1)
+        dialogueConfigMachine.mainloop()
+
+
+        
+        
     #rafrachissement toutes les 1000 ms
     def update_timer(self):
         self.update_clock();
@@ -88,6 +129,7 @@ class ServerGui():
                 self.canvas.create_rectangle(175-10, i*self.hauteur/(nb+1)-10,175+10, i*self.hauteur/(nb+1)+10,fill = 'red')
             i=i+1
         db.close
+
         try:
             self.photo = PhotoImage(file="plan.gif")
             self.canvas.create_image(260, 80, anchor=NW, image=self.photo)
