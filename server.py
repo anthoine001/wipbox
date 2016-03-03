@@ -32,18 +32,25 @@ class ClientThread(threading.Thread):
         print("Connection de %s %s" % (self.ip, self.port, ))
         maintenant =str(datetime.now())
         r = self.clientsocket.recv(2048)
-        r2 =  maintenant + "; " + r
-        file = open(file_save, 'a')
-        file.write(r2 + "\n")
-        file.close()
-        machine = r[0:6]
-        niveau = r[6]
-        niveau = int(niveau)
+        #r2 =  maintenant + "; " + r
+        #file = open(file_save, 'a')
+        #file.write(r2 + "\n")
+        #file.close()
         
-        #rangement dans la base SQLite
+        machine = r[0:6]
+        niveau = int(r[6])
+        
+        #rangement dans la base SQLite wipOutillage
         db = sqlite3.connect('wipOutillage.db')
         cursor = db.cursor()
         cursor.execute("UPDATE etat SET niveau = ?, moment = ? WHERE machine = ?",(niveau,maintenant,machine))
+        db.commit()
+        db.close()
+        
+        #rangement dans la base SQLite wipHistorique
+        db = sqlite3.connect('wipHistorique.db')
+        cursor = db.cursor()
+        cursor.execute("INSERT INTO histo(machine, niveau, moment) VALUES(?,?,?)",(machine , niveau , maintenant))
         db.commit()
         db.close()
         print("Client déconnecté...")
