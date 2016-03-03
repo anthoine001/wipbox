@@ -24,7 +24,7 @@ class ServerGui():
         #initialisation du menu
         menubar = Menu(self.root)
         menu1 = Menu(menubar, tearoff=0)
-        menu1.add_command(label="Inialiser une machine", command=self.initMachine)
+        menu1.add_command(label="Initialiser les machines", command=self.initMachine)
         menu1.add_command(label="Editer", command=self.alert)
         menu1.add_separator()
         menu1.add_command(label="Quitter", command=self.root.quit)
@@ -51,21 +51,31 @@ class ServerGui():
         #loop principale
         self.root.mainloop()
         
+    # procédure test à dégager ensuite    
     def alert(self):
         showinfo("alerte", "Bravo!")
 
+        
+    # Menu Configuration/ Initialiser les machines
     def initMachine(self) :
+
         def saveConfigMachine() :
             print("saveConfigMachine")
             db = sqlite3.connect('wipOutillage.db')
             cursor = db.cursor()
-            #cursor.execute("""SELECT machine FROM etat""")
-            #rows = cursor.fetchall()
             maintenant =str(datetime.now())
             i=0
             for e in entries:
-                print (e.get(), str(donnees[i]))
-                #cursor.execute("UPDATE etat SET niveau = ?, moment = ? WHERE machine = ?",(e.get(),maintenant,donnees[i]))
+                print (e.get(), machines[i])
+                try:
+                    a=int(e.get())
+                except:
+                    a=e.get()
+                    if a!="":
+                        showinfo(machines[i], "Le champs requiert un entier !")
+                if type(a) == int:
+                    cursor.execute("UPDATE etat SET niveau = ?, moment = ? WHERE machine = ?",(a,maintenant,machines[i]))
+                    print(machines[i]," mise à jour")
                 i=i+1
             db.commit()
             db.close()
@@ -77,7 +87,7 @@ class ServerGui():
         cursor.execute("""SELECT count(machine) FROM etat""")
         nbMachines = cursor.fetchone()
         nb=int(nbMachines[0])
-        cursor.execute("""SELECT machine FROM etat""")
+        cursor.execute("""SELECT machine, niveau, moment, alerte FROM etat""")
         donnees = cursor.fetchall()
         i=0
         entries =[]
@@ -88,7 +98,7 @@ class ServerGui():
             l.grid(row=i, column=0)
             e.grid(row=i, column=1)
             entries.append(e)
-            machines.append(donnees[i])
+            machines.append(line[0])
             i=i+1
         db.close
         b1 = Button(dialogueConfigMachine, text='Valider', command=saveConfigMachine)
@@ -96,7 +106,6 @@ class ServerGui():
         b2 = Button(dialogueConfigMachine, text='Annuler', command=dialogueConfigMachine.destroy)
         b2.grid(row=i, column=1)
         dialogueConfigMachine.mainloop()
-
 
         
         
