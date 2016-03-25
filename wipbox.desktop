@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=Wipbox
+Exec=sh -c "python ~/wipbox/gui_client.py"
+Terminal=true
