@@ -10,6 +10,8 @@ import socket
 import argparse
 
 
+
+
 parser = argparse.ArgumentParser(description='wipbox client')
 parser.add_argument('--ip', nargs=1, help='adresse ip')
 parser.add_argument('--port', type=int, help='numero de port')
@@ -28,16 +30,21 @@ stock=10
 if(args.stock is not None):
     stock = args.stock
 
-print "adress " + serveur_ip + "[" + str(serveur_port) + "]" 
+print("adress " + serveur_ip + "[" + str(serveur_port) + "]" )
 
 
 #Definition de la taille de l ecran et du stock
 fenetre = Tk()
-limite=4
-largeur =fenetre.winfo_screenwidth()
-hauteur=fenetre.winfo_screenheight()
-taille=largeur/(stock+1)
+
+limite = input ("quelle est la limite de lot a ne pas depasser le seuil critique : ")
+# ligne ci dessous ajoutee le 29 novembre 2016
+limite = int(limite)
+# 
+largeur = fenetre.winfo_screenwidth()
+hauteur = fenetre.winfo_screenheight()
+taille = largeur/(stock+1)
 niveau =0
+
 
 
 #initialisation de la fenetre
@@ -48,7 +55,7 @@ try:
     photo = PhotoImage(file="ntn.jpeg")
     canvas.create_image(0, 0, anchor=NW, image=photo)
 except:
-    print "load img fail"
+    print ("load img fail")
 k=niveau
 marqueur=canvas.create_oval(taille*k,hauteur/2+taille*0.5,taille*(k+1),hauteur/2+taille*1.5,fill='yellow')
 
@@ -69,14 +76,22 @@ canvas.pack()
 def send_niveau(niveau):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect((serveur_ip, serveur_port))
-    s.send(args.nom + str(niveau))
+    print (niveau)
+    codebyte=str(niveau).encode('ascii')
+    nombyte=str(args.nom).encode('ascii')
+    limitebyte = str(limite).encode('ascii')
+    print (codebyte)
+    print (nombyte)
+    print (limitebyte)
+    s.send((nombyte) + (codebyte) + (limitebyte))
+    
 
 #Detection du clic, de la position et positionnement d'un symbole
 def touche(event):
     if hauteur/2-taille/2<event.y<hauteur/2+taille/2:
         # Capturer la case qui a ete cliquee
         k=int(event.x/taille)
-        print(k)
+        #print( k)
         canvas.coords(marqueur,taille*k,hauteur/2+taille*0.5,taille*(k+1),hauteur/2+taille*1.5)
         niveau=k
         send_niveau(niveau)

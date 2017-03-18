@@ -3,54 +3,47 @@
 
 import socket
 import threading
-from datetime import datetime
+import datetime
 import sqlite3
-
+import time
 
 port = 1111
 listeMachines = ['K3X8--','K2X8--','CX7---','KX10--']
-listeNiveaux = [0,0,0,0]
 file_save = "histo.txt"
-
-def ranger(texte,valeur):
-    for i in range(len(listeMachines)):
-        if listeMachines[i]==texte:
-            listeNiveaux[i]=valeur
 
 class ClientThread(threading.Thread):
 
     def __init__(self, ip, port, clientsocket):
-
         threading.Thread.__init__(self)
         self.ip = ip
         self.port = port
         self.clientsocket = clientsocket
+        
         print("[+] Nouveau thread pour %s %s" % (self.ip, self.port, ))
-
-    def run(self): 
-   
-        print("Connection de %s %s" % (self.ip, self.port, ))
-        maintenant =str(datetime.now())
-        r = self.clientsocket.recv(2048)
-        #r2 =  maintenant + "; " + r
-        #file = open(file_save, 'a')
-        #file.write(r2 + "\n")
-        #file.close()
-        
-        machine = r[0:6]
-        niveau = int(r[6])
-        
+        unix=time.time()
+        maintenant =str(datetime.datetime.fromtimestamp(unix).strftime("%Y-%m-%d %H:%M:%S"))
+        receivedData = self.clientsocket.recv(2048)
+        DecodedData=receivedData.decode("utf-8")
+        print (DecodedData)
+        machine = str(DecodedData[0:6])
+        print (machine)
+        level = (DecodedData[6:7])
+        threshold= (DecodedData [7:])
+        print (threshold)
+       
+        print (level)
+               
         #rangement dans la base SQLite wipOutillage
-        db = sqlite3.connect('wipOutillage.db')
+        db = sqlite3.connect('wipOutillageYnnis.db')
         cursor = db.cursor()
-        cursor.execute("UPDATE etat SET niveau = ?, moment = ? WHERE machine = ?",(niveau,maintenant,machine))
+        cursor.execute("UPDATE Machine SET level = ?, unix = ?, datestamp = ?, threshold= ? WHERE machine_ID = ?",(level,unix,maintenant,threshold,machine))
         db.commit()
         db.close()
         
         #rangement dans la base SQLite wipHistorique
-        db = sqlite3.connect('wipHistorique.db')
+        db = sqlite3.connect('wipHistoriqueYnnis.db')
         cursor = db.cursor()
-        cursor.execute("INSERT INTO histo(machine, niveau, moment) VALUES(?,?,?)",(machine , niveau , maintenant))
+        cursor.execute("INSERT INTO histo(machine, level, unix, datestamp,threshold) VALUES(?,?,?,?,?)",(machine , level , unix, maintenant,threshold))
         db.commit()
         db.close()
         print("Client déconnecté...")
@@ -62,7 +55,8 @@ tcpsock.bind(("",1111))
 while True:
     tcpsock.listen(10)
     print( "En écoute... port " + str(port))
+    
     (clientsocket, (ip, port)) = tcpsock.accept()
     newthread = ClientThread(ip, port, clientsocket)
     newthread.start()
-
+    

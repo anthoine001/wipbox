@@ -4,12 +4,13 @@
 
 
  
-from tkinter import *
+from Tkinter import *
  
 def pointeur(event):
     chaine.configure(text = "Clic detecte en X =" + str(event.x) +", Y =" + str(event.y))
     print("Clic detecte en X =" + str(event.x) +", Y =" + str(event.y))
- 
+    coordx=(event.x)+6
+    print coordx
 fen = Tk()
 cadre = Frame(fen, width =200, height =150, bg="light yellow")
 cadre.bind("<Button-1>", pointeur)

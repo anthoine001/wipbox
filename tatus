@@ -1,0 +1,364 @@
+[33mcommit 4a8bf77e4a8138b598a6955a71fc925052f1ec01[m
+Merge: 573ccc7 19dfd83
+Author: Clement Lemaire <lemairec02@gmail.com>
+Date:   Fri Mar 25 09:38:31 2016 +0100
+
+    Merge branch 'SQLite-strategy' of ssh://github.com/anthoine001/wipbox into SQLite-strategy
+
+[33mcommit 573ccc7a54df72df11f145fbd34b7272a1f12f4d[m
+Author: Clement Lemaire <lemairec02@gmail.com>
+Date:   Fri Mar 25 09:33:52 2016 +0100
+
+    desktop
+
+[33mcommit a796e903fe3065e15e72b362eb098547f4640a6e[m
+Author: Clement Lemaire <lemairec02@gmail.com>
+Date:   Fri Mar 25 09:33:09 2016 +0100
+
+    ignore DS_Store file on git
+
+[33mcommit 19dfd83cf47b48ac8bcba49574abd049c672ef35[m
+Author: anthoine001 <a-selosse@orange.fr>
+Date:   Fri Mar 11 10:19:18 2016 +0100
+
+    Ajout de la config graphique
+
+[33mcommit 7651145f024e1d0c1aa9c64cd8775f8efbae3ab3[m
+Author: anthoine001 <a-selosse@orange.fr>
+Date:   Thu Mar 3 13:44:42 2016 +0100
+
+    Modification de la sauvegarde des données
+    
+    utilitaire de création de la base wipHisto
+    exemple de base vierge
+    modif de server.py pour ranger dans la base les infos reçues
+
+[33mcommit ab5df32ea1791a3becb172c18e3b647c5718c0fa[m
+Author: anthoine001 <a-selosse@orange.fr>
+Date:   Thu Mar 3 10:12:50 2016 +0100
+
+    Configuration/initialisation des machines
+    
+    is a success !
+
+[33mcommit 3a21f9db238ac33333455f8dd6f7ada4d5473b00[m
+Author: anthoine001 <a-selosse@orange.fr>
+Date:   Wed Mar 2 19:31:15 2016 +0100
+
+    maj sauvegarde config
+    
+    marche pas...
+
+[33mcommit bf3588dff7278ed99ef8583e7b780b7a54c8b39b[m
+Author: anthoine001 <a-selosse@orange.fr>
+Date:   Wed Mar 2 18:49:27 2016 +0100
+
+    Config machine (en cours)
+
+[33mcommit cd6ea3bd472efb1784fe870a4109856cbbfbcda6[m
+Author: anthoine001 <a-selosse@orange.fr>
+Date:   Mon Feb 29 11:55:08 2016 +0100
+
+    Ajout menu
+    
+    pour l'instant ne sert à rien, mais ne soit c'est déjà une amélioration
+
+[33mcommit 4f66a763b1b54eaedba19be989182ca9d8db7a74[m
+Author: anthoine001 <antoineselosse@air-de-antoine.home>
+Date:   Wed Feb 24 21:54:14 2016 +0100
+
+    essai gui souris
+
+[33mcommit 7dcda11ebd68d83fada10a0ebedf8df073628b94[m
+Author: anthoine001 <a-selosse@orange.fr>
+Date:   Tue Feb 23 16:38:55 2016 +0100
+
+    Ajout plan outillage
+
+[33mcommit 9954f46d6114ff0f294d91ce8f463a9023f08dc3[m
+Author: anthoine001 <a-selosse@orange.fr>
+Date:   Sun Feb 21 17:24:41 2016 +0100
+
+    Rename toto.txt to histo.txt
+
+[33mcommit beb4d08944cf17863e5883dbc43cfb8fcd44880c[m
+Author: anthoine001 <a-selosse@orange.fr>
+Date:   Sun Feb 21 17:22:51 2016 +0100
+
+    Update server.py
+
+[33mcommit 4bc6fcbfc31e1e6296fef947581cc70ef2db442a[m
+Author: anthoine001 <a-selosse@orange.fr>
+Date:   Sun Feb 21 17:20:07 2016 +0100
+
+    Rename gui_server_test.py to gui_server.py
+
+[33mcommit 73130445aa965afab4217b9984e058f7279eebba[m
+Author: anthoine001 <antoineselosse@air-de-antoine.home>
+Date:   Fri Feb 12 22:14:51 2016 +0100
+
+    Version fonctionnelle
+    
+    ça marche mais ce n’est pas encore très beau
+
+[33mcommit 16b85c5b6143ad03d1cddb24351ca3756e1822ec[m
+Author: anthoine001 <antoineselosse@air-de-antoine.home>
+Date:   Fri Feb 12 21:27:06 2016 +0100
+
+    petite correction sur root = tk()
+    
+    provoquait une erreur (pas tres grave) mais pas propre
+
+[33mcommit 3577e12c91b42eefc68f3ba8033fa8f199dd5836[m
+Author: Clement Lemaire <lemairec02@gmail.com>
+Date:   Fri Feb 12 10:40:11 2016 +0100
+
+    server gui avec timer
+
+[33mcommit fac91af3e0b306d3f4812cc10f26f67612acc49d[m
+Author: anthoine001 <antoineselosse@air-de-antoine.home>
+Date:   Thu Feb 11 23:52:50 2016 +0100
+
+    marche pas...
+
+[33mcommit ef2d3a651794c84a7a29f4cb9cb2aab6a3606737[m
+Author: anthoine001 <antoineselosse@air-de-antoine.home>
+Date:   Thu Feb 11 23:36:57 2016 +0100
+
+    nouvelle appli gui_server
+
+[33mcommit 4df46c77be6b7cd273a216ca5e6ee911bc6880c8[m
+Author: anthoine001 <a-selosse@orange.fr>
+Date:   Wed Feb 10 23:43:46 2016 +0100
+
+    Delete lectureBase.py
+
+[33mcommit d6e8968d9b2286c9e84d149d60e77f44a1b4e123[m
+Author: anthoine001 <a-selosse@orange.fr>
+Date:   Wed Feb 10 23:43:32 2016 +0100
+
+    Delete basesql.py
+
+[33mcommit 24d5909742a1ee5f0d39fcb61ec1d69e1abde3bf[m
+Author: anthoine001 <antoineselosse@air-de-antoine.home>
+Date:   Wed Feb 10 23:41:10 2016 +0100
+
+    ajout niveau alerte
+
+[33mcommit 8fa71935e255b2e1e33e56be73a8dccd9509c158[m
+Author: anthoine001 <antoineselosse@air-de-antoine.home>
+Date:   Wed Feb 10 23:31:07 2016 +0100
+
+    avec enregistrement de la date de modif
+
+[33mcommit 964834e2b7deccc903c3d5d04c33871466d66f47[m
+Author: anthoine001 <antoineselosse@air-de-antoine.home>
+Date:   Wed Feb 10 23:28:24 2016 +0100
+
+    ça marche!
+
+[33mcommit 20ff19ca0d1e8876fbdc54f38f83471a3bff3844[m
+Author: anthoine001 <antoineselosse@air-de-antoine.home>
+Date:   Wed Feb 10 22:58:23 2016 +0100
+
+    chgt clé primaire
+
+[33mcommit eec9f4c6c91b142a150ca6d9ce51802b26db0218[m
+Author: anthoine001 <antoineselosse@air-de-antoine.home>
+Date:   Wed Feb 10 22:21:46 2016 +0100
+
+    UPDATE marche pas
+
+[33mcommit f1163ed15c9cae6c1ae0fc895f085dc990e1bc45[m
+Author: anthoine001 <antoineselosse@air-de-antoine.home>
+Date:   Wed Feb 10 22:09:52 2016 +0100
+
+    Base creator
+    
+    et mise à jour
+
+[33mcommit fbad67fd0407345237f4bea080f8650a9785e3ce[m
+Author: anthoine001 <antoineselosse@air-de-antoine.home>
+Date:   Tue Feb 9 21:05:08 2016 +0100
+
+    update
+
+[33mcommit ae1caecc68ff9376e5e695e02af4573af8d83f44[m
+Author: anthoine001 <antoineselosse@air-de-antoine.home>
+Date:   Tue Feb 9 20:55:50 2016 +0100
+
+    update
+
+[33mcommit 5aba0b41efea5aca5b9907699459014f8bba908d[m
+Author: anthoine001 <antoineselosse@air-de-antoine.home>
+Date:   Tue Feb 9 20:39:20 2016 +0100
+
+    Essai SQLite
+
+[33mcommit 28f42e8c3b100bf0c490bc24239ca7745ae005a1[m
+Author: anthoine001 <antoineselosse@air-de-antoine.home>
+Date:   Mon Feb 8 23:43:49 2016 +0100
+
+    essai thread
+
+[33mcommit 9dfba38d717794d57ce7724335aa61634d46bc63[m
+Author: anthoine001 <antoineselosse@air-de-antoine.home>
+Date:   Mon Feb 8 22:59:07 2016 +0100
+
+    ajout ecran server
+    
+    mais ça marche pas
+
+[33mcommit e7289de1181414978106a67e4270bc672cb00feb[m
+Author: anthoine001 <antoineselosse@air-de-antoine.home>
+Date:   Mon Feb 8 22:07:01 2016 +0100
+
+    Multimachine
+    
+    modif pour prendre en compte 4 machines
+
+[33mcommit f2471930603d04daaf4d7daf2205801f294d206b[m
+Author: anthoine001 <a-selosse@orange.fr>
+Date:   Sat Feb 6 21:14:32 2016 +0100
+
+    Update server.py
+
+[33mcommit 6abfd017e8df94e7ebc6c245bef2d6a3c8ef6751[m
+Author: anthoine001 <a-selosse@orange.fr>
+Date:   Sat Feb 6 00:51:43 2016 +0100
+
+    Update gui_client.py
+
+[33mcommit ab6ece061cb7f003c45795a65a0573e8c14ef8f5[m
+Author: anthoine001 <a-selosse@orange.fr>
+Date:   Sat Feb 6 00:47:25 2016 +0100
+
+    Update gui_client.py
+
+[33mcommit 7307334322819fa168dda7cf2c8790871d5c6687[m
+Author: anthoine001 <antoineselosse@air-de-antoine.home>
+Date:   Sun Jan 31 21:28:57 2016 +0100
+
+    taille
+    
+    optimisée par recuperation de la taille de l’écran
+
+[33mcommit ccd6abf9f71506c5e0a606225453f625537a9604[m
+Author: Clement Lemaire <lemairec02@gmail.com>
+Date:   Sat Jan 30 15:43:27 2016 +0100
+
+    resolution
+
+[33mcommit 6a2a5f27f8dd8ff554d177035a41bdda4f48e6f3[m
+Author: Clement Lemaire <lemairec02@gmail.com>
+Date:   Sat Jan 30 15:40:16 2016 +0100
+
+    re fix
+
+[33mcommit d5b0c7e68c19989b040f914080c291ef6756d782[m
+Author: Clement Lemaire <lemairec02@gmail.com>
+Date:   Sat Jan 30 15:39:19 2016 +0100
+
+    fix
+
+[33mcommit 3bf59702f0436483ced4cb0ccca9f4f116a3e456[m
+Author: Clement Lemaire <lemairec02@gmail.com>
+Date:   Sat Jan 30 15:37:38 2016 +0100
+
+    server ip & stock
+
+[33mcommit 786561e65170731930cf65223baa7007bffcb6fe[m
+Author: Clement Lemaire <lemairec02@gmail.com>
+Date:   Sat Jan 30 11:47:32 2016 +0100
+
+    add argparse
+
+[33mcommit dca5188d2e05bed851259f37efe53b490c00bf02[m
+Merge: 59a219c 8ad1674
+Author: Clement Lemaire <lemairec02@gmail.com>
+Date:   Tue Jan 26 20:17:31 2016 +0100
+
+    Merge branch 'master' of ssh://github.com/anthoine001/wipbox
+
+[33mcommit 59a219c79c435435bb56918fb86054602d74153b[m
+Author: Clement Lemaire <lemairec02@gmail.com>
+Date:   Tue Jan 26 20:17:02 2016 +0100
+
+    try except for image
+
+[33mcommit 8ad16742f602cf57b3dfa6f0ebf967829444ac03[m
+Author: anthoine001 <a-selosse@orange.fr>
+Date:   Tue Jan 26 12:58:18 2016 +0100
+
+    Delete test_bouton.py
+
+[33mcommit 377a4aa748147d05e0d1587800535532d8734f22[m
+Author: Clement Lemaire <lemairec02@gmail.com>
+Date:   Sun Jan 24 22:59:34 2016 +0100
+
+    client for server
+
+[33mcommit fb34ca740b2b4269eb15b4d5bcaef3b519e3b5a4[m
+Merge: fd215bd dc693fd
+Author: Clement Lemaire <lemairec02@gmail.com>
+Date:   Sun Jan 24 22:49:46 2016 +0100
+
+    Merge branch 'master' of ssh://github.com/anthoine001/wipbox
+
+[33mcommit dc693fddb33d448cf0cd36f38235b760b0d398da[m
+Author: anthoine001 <a-selosse@orange.fr>
+Date:   Sun Jan 24 20:08:07 2016 +0100
+
+    update
+    
+    code qui fonctionne sans bouton
+
+[33mcommit eba2efc0d74777d7e8a794602adeb05b17ccc5dd[m
+Author: anthoine001 <antoineselosse@air-de-antoine.home>
+Date:   Sat Jan 23 22:31:27 2016 +0100
+
+    test interface boutons avec code couleur
+
+[33mcommit b5b7c3c7da4d0bb730a5440b4ca3133a28c308d1[m
+Author: anthoine001 <antoineselosse@MacBook-Air-de-Antoine.local>
+Date:   Sat Jan 23 17:58:03 2016 +0100
+
+    test boutons
+
+[33mcommit fd215bdb5d52dd0114bd9c55212aef54e5ac1b2d[m
+Author: Clement Lemaire <lemairec02@gmail.com>
+Date:   Sat Jan 23 16:26:27 2016 +0100
+
+    server
+
+[33mcommit 1ccb87097158d1f35dbaca6f3f2951461bc1ab2d[m
+Author: anthoine001 <antoineselosse@MacBook-Air-de-Antoine.local>
+Date:   Sat Jan 23 15:26:57 2016 +0100
+
+    changement antoine
+
+[33mcommit c9bdd12ebf0eb5d056cef29237c48744e11c38e9[m
+Author: anthoine001 <a-selosse@orange.fr>
+Date:   Sat Jan 23 14:57:12 2016 +0100
+
+    Update README.md
+    
+    réadmet
+
+[33mcommit 708341b3df0d5b98ed657bf21bfbc7438a171a0c[m
+Author: Clement Lemaire <lemairec02@gmail.com>
+Date:   Sat Jan 23 14:34:35 2016 +0100
+
+    gui
+
+[33mcommit d8847411ac97907835224ebc629a9e65162f42bc[m
+Author: anthoine001 <a-selosse@orange.fr>
+Date:   Sat Jan 23 14:29:57 2016 +0100
+
+    Create README.md
+
+[33mcommit e5ff28cf8014a15b55de0c8e5ba7bb88b757c369[m
+Author: anthoine001 <a-selosse@orange.fr>
+Date:   Sat Jan 23 14:19:32 2016 +0100
+
+    Initial commit

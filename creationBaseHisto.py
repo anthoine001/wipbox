@@ -2,21 +2,20 @@
 # coding: utf-8 
 
 import sqlite3
-from datetime import datetime
+import datetime
 
-db = sqlite3.connect('wipHistorique.db')
+db = sqlite3.connect('wipHistoriqueYnnis.db')
 cursor = db.cursor()
 
 
 
 cursor.execute("""
 CREATE TABLE IF NOT EXISTS histo(
-     id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE,
+     unix REAL,
+     datestamp TEXT,
      machine TEXT,
-     niveau INTERGER,
-     moment TEXT,
-     alerte INTEGER
-)
+     level REAL,
+     threshold INTEGER)
 """)
 
 db.commit()
