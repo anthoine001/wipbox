@@ -27,10 +27,9 @@ class ClientThread(threading.Thread):
         print (DecodedData)
         machine = str(DecodedData[0:6])
         print (machine)
-        level = (DecodedData[6:7])
-        threshold= (DecodedData [7:])
+        level = (DecodedData[6:8])
+        threshold= (DecodedData [8:])
         print (threshold)
-       
         print (level)
                
         #rangement dans la base SQLite wipOutillage

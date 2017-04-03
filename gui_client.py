@@ -25,7 +25,7 @@ parser.add_argument('--stock', type=int, help='stock')
 parser.add_argument('--nom', type=str, help='nom de la machine')
 args = parser.parse_args()
 
-serveur_ip = ""
+serveur_ip = '192.168.1.29'
 if(args.ip is not None):
     serveur_ip = args.ip[0]
 serveur_port = 1111
@@ -86,7 +86,10 @@ def send_level(level):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect((serveur_ip, serveur_port))
     print (level)
-    codebyte=str(level).encode('ascii')
+    if level<10:
+        codebyte=("0"+str(level)).encode('ascii')
+    elif level>=10:
+        codebyte=str(level).encode('ascii')
     nombyte=str(args.nom).encode('ascii')
     thresholdbyte = str(threshold).encode('ascii')
     print (codebyte)

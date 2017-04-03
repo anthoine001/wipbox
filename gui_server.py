@@ -6,14 +6,14 @@ except:
 
 import sqlite3
 import datetime
-import numpy as np
-from cycler import cycler
+#import numpy as np
+#from cycler import cycler
 import time
-import matplotlib.pyplot as plt
-import matplotlib.dates as mdates
-from matplotlib import style
+#import matplotlib.pyplot as plt
+#import matplotlib.dates as mdates
+#from matplotlib import style
 import sqlite3
-style.use('fivethirtyeight')
+#style.use('fivethirtyeight')
 
 
 class GuiServer:
