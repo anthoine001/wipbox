@@ -25,7 +25,6 @@ parser.add_argument('--stock', type=int, help='stock')
 parser.add_argument('--nom', type=str, help='nom de la machine')
 args = parser.parse_args()
 
-serveur_ip = '192.168.1.29'
 if(args.ip is not None):
     serveur_ip = args.ip[0]
 serveur_port = 1111
